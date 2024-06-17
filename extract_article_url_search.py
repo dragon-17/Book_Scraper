@@ -17,9 +17,10 @@ import os
 
 from scraper_helper import declineCookies, downloadImage, dragonMsg, extract, loadURLs, save, testIsGermanBook, writeCurIndex
 
+#bsp use >> python extract_article_url_search.py -u https://www.thalia.de/suche?sq=zelda
 
 parser = argparse.ArgumentParser(
-                    prog='Saerch article Extracter',
+                    prog='Search article or category Extracter',
                     description='This script extracts from an thalia category url or an thalia search url all articles that show up to an upperbound\n\nThe default without args values scrape a example page.  \n\nif the out_file is in a Folder the folders must exists',
                     epilog='Help End')
 
@@ -91,7 +92,7 @@ return    [...new Set(all_links)].join("\n")
     with open(used_out_file, 'w',encoding= "utf-8") as file:
         file.write(cat_urls)
     
-    #browser.close()
+    browser.close()
     sleep(10)
     dragonMsg()
     print("finshed succesfully\n")  
