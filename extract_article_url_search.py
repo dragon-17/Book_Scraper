@@ -39,10 +39,7 @@ chrome_options = Options()
 # useHeadless=True # currently crashes with headleess true
 # if useHeadless: chrome_options.add_argument("--headless")
 
-chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-chrome_options.add_experimental_option('useAutomationExtension', False)# navigator. webdriver
-# chrome_options.add_experimental_option("useAutomationExtension",False)
-
+chrome_options.add_argument(f"--disable-blink-features=AutomationControlled")
 # Set the custom User-Agent
 #chrome_options.add_argument(f"--user-agent={my_user_agent}")
 

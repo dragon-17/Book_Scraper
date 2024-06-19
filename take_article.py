@@ -27,9 +27,7 @@ chrome_options = Options()
 # useHeadless=True # currently crashes with headleess true
 # if useHeadless: chrome_options.add_argument("--headless")
 
-chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-chrome_options.add_experimental_option('useAutomationExtension', False)# navigator. webdriver
-# chrome_options.add_experimental_option("useAutomationExtension",False)
+chrome_options.add_argument(f"--disable-blink-features=AutomationControlled")
 
 # Set the custom User-Agent
 #chrome_options.add_argument(f"--user-agent={my_user_agent}")
@@ -37,6 +35,9 @@ chrome_options.add_experimental_option('useAutomationExtension', False)# navigat
 def take_sitemap_articles(output_file:str="default.txt",up_to_page=4):
     browser:WebDriver= webdriver.Chrome(chrome_options)
     browser.get('https://thalia.de')
+    
+    print( 'useragent?',browser.execute_script(' console.log(`useragent`,window.navigator.userAgent);return window.navigator.userAgent '))
+    print( 'Am I a webdriver?',browser.execute_script(' console.log(`Am I a webdriver? `,navigator.webdriver);return navigator. webdriver '))
     sleep(1)
     declineCookies(browser)
     sleep(1)
